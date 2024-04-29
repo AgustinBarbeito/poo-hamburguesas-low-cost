@@ -1,40 +1,41 @@
-import componentes.Ingrediente;
-import componentes.Medallon;
-import hamburguesas.HamburguesaDoble;
-import hamburguesas.HamburguesaSimple;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
 
-        // Medallones
-        Medallon carneVacuna = new Medallon(1500);
-        Medallon pollo = new Medallon(1200);
-        Medallon veggie = new Medallon(1300);
+        Hamburguesa hamburguesa1 = new Hamburguesa();
 
 
-        // Ingredientes
-        Ingrediente lechugaTomate = new Ingrediente(300);
-        Ingrediente cebolla = new Ingrediente(250);
-        Ingrediente cheddar = new Ingrediente(400);
-        Ingrediente bacon = new Ingrediente(450);
+        Ingredientes tomate = new Ingredientes("Tomate","Rodajas de tomate fresco",100);
+        Ingredientes lechuga = new Ingredientes("Lechuga","Hojas de lechuga verde", 100);
+        Ingredientes cebolla1 = new Ingredientes("Cebolla","Porcion de cebolla", 100);
+        Ingredientes cebolla2 = new Ingredientes("Cebolla Caramelizada", "Porcion de cebolla caramelizada",100);
+        Ingredientes cebolla3 = new Ingredientes("Cebolla Crispy", "Porcion de cebolla crispy",100);
+        Ingredientes pepinillos = new Ingredientes("Pepinillos","Pepinillos finamente cortados",100);
+        Ingredientes bacon = new Ingredientes("Bacon","2 lonchas de bacon", 200);
+        Ingredientes medallonCarne = new Ingredientes("Medallon de Carne", "Medallon de carne picada de 100 gramos",400);
+        Ingredientes medallonPollo = new Ingredientes("Medallon de Pollo", "Medallon de pollo frito de 100 gramos", 400);
+        Ingredientes medallonVegano = new Ingredientes("Medallon Vegano", "Medallon de Soja de 100 gramos 100% Vegano",400);
+        Ingredientes mayonesa = new Ingredientes("Mayonesa","Marca Hellmans",0);
+        Ingredientes ketchup = new Ingredientes("Ketchup","Marca Hellmans",0);
+        Ingredientes mostaza = new Ingredientes("Mostaza","Marca Hellmans",0);
 
 
-        // Test hamburguesa simple
-        HamburguesaSimple simple01 = new HamburguesaSimple(3000);
-        simple01.setMedallon1(pollo);
-        simple01.setIngrediente1(cebolla);
-        System.out.println("El precio final de simple01 es:" + simple01.calcularPrecioTotal());
-
-        // Test hamburguesa doble
-        HamburguesaDoble contradiccionIdeologica = new HamburguesaDoble(3000);
-        contradiccionIdeologica.setMedallon1(carneVacuna);
-        contradiccionIdeologica.setMedallon2(veggie);
-        contradiccionIdeologica.setIngrediente1(lechugaTomate);
-        contradiccionIdeologica.setIngrediente2(bacon);
-        System.out.println("El precio final de contradiccionIdeologica es:" + contradiccionIdeologica.calcularPrecioTotal());
+        hamburguesa1.agregarIngrediente(tomate);
+        hamburguesa1.agregarIngrediente(lechuga);
+        hamburguesa1.agregarIngrediente(medallonCarne);
+        hamburguesa1.agregarIngrediente(medallonCarne);
+        hamburguesa1.agregarIngrediente(mayonesa);
 
 
 
+        ArrayList<Ingredientes> menuIngredientes = hamburguesa1.getIngredientes();
+        System.out.println("Ingredientes de la hamburguesa:" );
+        for (Ingredientes ingrediente: menuIngredientes) {
+            System.out.println(ingrediente.getNombre() + ": $" + ingrediente.getPrecio());
+        }
 
+        int precioTotal = hamburguesa1.calcularPrecioTotal(150);
+        System.out.println("Precio total de la hamburguesa: $" + precioTotal);
     }
 }
